@@ -1,37 +1,67 @@
 ---
 title: "R Insights Workshop - Session 1"
 author: "Matthias Gloël"
-date: "06 January 2018"
+date: "05 January 2018"
+fontsize: 18
 mainfont: Arial
+
 output: 
   pdf_document:
     latex_engine: xelatex
 
+
 ---
 
+# The most important command
+The **help** command opens the documentation 
+```{r}
+help(read.csv)
+```
+# Getting and Setting Working Directory
 
-## Getting and Setting Working Directory
-
-1. Check your current working directory:
+## 1. Check your current working directory:
 
 ```{r}
 getwd()
 ```
 
-2. Set the working directory to the folder where your data file is located.
+## 2. Set the working directory to the folder where your data file is located.
+**For example "/Users/YourName/Rtutorial/" **
 
 ```{r}
 setwd("/Users/matthiasgloel/RWorkShop/")
 ```
 
-3. List files in your folder 
+## 3. List files in your folder 
 ```{r, eval=FALSE}
 list.files()
 ```
 
-## Reading in a CSV file from Working Directory
+# Reading in a CSV file from Working Directory
 ```{r}
-data_set <- read.csv("nt-data-example.csv", sep=";")
+data_set <- read.csv("nt-data-example.csv")
 ```
 
-## Getting some useful information about the data frame
+
+# Getting some useful information about the data frame
+<p>  
+The **str** command yields information about the structure of the data frame, i.e. which column contains what type of data (e.g. factors, numbers, text, dates etc. )
+
+```{r}
+str(data_set)
+```
+<p>
+The **summary** command yields information about the distribution of the data in the specified column. In order to access a specific column of a data frame you need to type $
+
+```{r}
+summary(data_set$age)
+```
+
+# Frequency Tables
+```{r}
+table(data_set$gender)
+```
+
+```{r}
+table(data_set$gender, data_set$income)
+```
