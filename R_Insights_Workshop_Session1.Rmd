@@ -1,24 +1,37 @@
 ---
 title: "R Insights Workshop - Session 1"
 author: "Matthias Gloël"
-date: "27 December 2017"
+date: "06 January 2018"
+mainfont: Arial
 output: 
   pdf_document:
-    latex_engine: pdflatex
-mainfont: Calibri
+    latex_engine: xelatex
 
 ---
 
 
-### Getting and Setting Working Directory
+## Getting and Setting Working Directory
+
+1. Check your current working directory:
+
 ```{r}
 getwd()
 ```
 
+2. Set the working directory to the folder where your data file is located.
 
-### Reading in a CSV file from Working Directory
 ```{r}
-plot(cars)
+setwd("/Users/matthiasgloel/RWorkShop/")
 ```
 
+3. List files in your folder 
+```{r, eval=FALSE}
+list.files()
+```
 
+## Reading in a CSV file from Working Directory
+```{r}
+data_set <- read.csv("nt-data-example.csv", sep=";")
+```
+
+## Getting some useful information about the data frame
