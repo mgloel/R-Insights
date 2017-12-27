@@ -1,0 +1,24 @@
+---
+title: "R Insights Workshop - Session 1"
+author: "Matthias Gloël"
+date: "27 December 2017"
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+mainfont: Calibri
+
+---
+
+
+### Getting and Setting Working Directory
+```{r}
+getwd()
+```
+
+
+### Reading in a CSV file from Working Directory
+```{r}
+plot(cars)
+```
+
+
