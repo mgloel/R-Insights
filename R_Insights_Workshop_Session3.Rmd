@@ -1,0 +1,35 @@
+---
+title: "R Insights Workshop - Session 3"
+author: "Matthias Gloël"
+date: "19 January 2018"
+fontsize: 18pt
+mainfont: Arial
+
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+# Installing and Loading Packages
+```{r, eval=FALSE}
+install.packages("xlsx")
+install.packages("dplyr")
+install.packages("ggplot2")
+```
+
+<p>
+Loading packages...
+```{r}
+library(xlsx)
+library(dplyr)
+library(ggplot2)
+```
+
+# Reading in Excel Spreadsheet
+```{r}
+setwd("/Users/matthiasgloel/RWorkShop/")
+data_set = read.csv("nt-data-example.csv")
+```
+
+
+# Munging and Aggregating with dplyr
