@@ -49,7 +49,12 @@ boxplot(data_set$age, main="Age", col="orange")
 
 # Correlation between typology questions
 ```{r}
-cor(data_set[,c('technology_adaption','nutrition','fitness','sacrifice_comfort','sleep')], method='spearman')
+typology_questions <-c('technology_adaption',
+                       'nutrition',
+                       'fitness',
+                       'sacrifice_comfort',
+                       'sleep')
+cor(data_set[,typology_questions], method='spearman')
 ```
 
 # Create Age Groups
@@ -60,4 +65,9 @@ range(data_set$age)
 
 ```{r}
 data_set$age_group <- cut(data_set$age, breaks=seq(0,80,20))
+```
+
+# Store Data Frame
+```{r}
+write.csv(data_set, "data_set_with_age_group.csv")
 ```
