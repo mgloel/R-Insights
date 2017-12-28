@@ -2,7 +2,7 @@
 title: "R Insights Workshop - Session 1"
 author: "Matthias Gloël"
 date: "05 January 2018"
-fontsize: 18
+fontsize: 18pt
 mainfont: Arial
 
 output: 
@@ -45,6 +45,16 @@ data_set <- read.csv("nt-data-example.csv")
 
 # Getting some useful information about the data frame
 <p>  
+Shape of the data frame
+```{r}
+# Number of columns
+ncol(data_set) 
+# Number of rows
+nrow(data_set)
+# Dimenstions
+dim(data_set)
+```
+<p>
 The **str** command yields information about the structure of the data frame, i.e. which column contains what type of data (e.g. factors, numbers, text, dates etc. )
 
 ```{r}
@@ -52,7 +62,12 @@ str(data_set)
 ```
 <p>
 The **summary** command yields information about the distribution of the data in the specified column. In order to access a specific column of a data frame you need to type $
-
+<p>
+Print first ten rows of data_set
+```{r}
+head(data_set)
+```
+<p>
 ```{r}
 summary(data_set$age)
 ```
@@ -64,4 +79,12 @@ table(data_set$gender)
 
 ```{r}
 table(data_set$gender, data_set$income)
+```
+
+# Aggregating Data (Pivoting)
+There are several ways to do that.<br>
+The function *tapply* is one of them.
+```{r}
+## tapply(Summary Variable, Group Variable, Function)
+tapply(data_set$age, data_set$city_size, mean)
 ```
