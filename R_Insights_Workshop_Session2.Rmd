@@ -1,0 +1,53 @@
+---
+title: "R Insights Workshop - Session 2"
+author: "Matthias Gloël"
+date: "12 January 2018"
+fontsize: 18pt
+mainfont: Arial
+
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+
+# Reading in the dataset
+```{r}
+setwd("/Users/matthiasgloel/RWorkShop/")
+data_set = read.csv("nt-data-example.csv")
+```
+
+
+# Accessing specific rows and columns
+```{r}
+female_respondents <- data_set[data_set$gender == 'female',]
+
+old_men <- data_set[(data_set$gender == 'male') & (data_set$age > 60), ]
+
+```
+<p>
+```{r}
+old_men <- old_men[,c('uuid','age','fitness')]
+```
+<p>
+Accessing rows by position
+```{r}
+# Print out rows 1 to 5 and columns 2 to 3
+data_set[1:5,2:3]
+```
+<p>
+# Plot Histogram
+```{r}
+hist(female_respondents$age)
+```
+<p>
+# Plot Boxplot
+```{r}
+# Add title and some color
+boxplot(data_set$age, main="Age", col="orange")
+```
+
+# Correlation between typology questions
+```{r}
+cor(data_set[,c('technology_adaption','nutrition','fitness','sacrifice_comfort','sleep')], method='spearman')
+```
