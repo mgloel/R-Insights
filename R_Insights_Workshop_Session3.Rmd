@@ -12,6 +12,7 @@ output:
 
 # Installing and Loading Packages
 ```{r, eval=FALSE}
+# INSTALL PACKAGES 
 install.packages("xlsx")
 install.packages("dplyr")
 install.packages("ggplot2")
@@ -20,6 +21,7 @@ install.packages("ggplot2")
 <p>
 Loading packages...
 ```{r}
+# LOAD PACKAGES
 library(xlsx)
 library(dplyr)
 library(ggplot2)
@@ -28,8 +30,43 @@ library(ggplot2)
 # Reading in Excel Spreadsheet
 ```{r}
 setwd("/Users/matthiasgloel/RWorkShop/")
-data_set = read.csv("nt-data-example.csv")
+nielsen_data = read.xlsx("Nielsen_Data_Sorted.xlsx",
+                     sheetIndex = 1)
 ```
 
 
-# Munging and Aggregating with dplyr
+# Renaming Columns
+```{r}
+# Print out column names
+names(nielsen_data)
+```
+
+```{r}
+# Rename TEURO to _2017
+# gsub('find','replace', vector)
+names(nielsen_data) <- gsub(".TEuro","_2017", names(nielsen_data))
+```
+
+# Partial matching only _2017
+```{r}
+nielsen_data_2017 <- nielsen_data[, c(2, grep("_2017", names(nielsen_data)))]
+
+nielsen_data_2017 <- nielsen_data_2017[,-c(2,3,4)]
+```
+
+# Drop Brands with Missing Spending Data
+```{r}
+nielsen_data_2017 <- na.omit(nielsen_data_2017)
+colnames(nielsen_data_2017)[2] <- 'Januar_2017'
+```
+
+# Total Spending in Quarter 1 (Jan-Mar)
+```{r}
+
+```
+
+
+# Line Plots Two Brands
+```{r}
+
+```
