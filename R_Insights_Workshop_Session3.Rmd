@@ -20,7 +20,7 @@ install.packages("ggplot2")
 
 <p>
 Loading packages...
-```{r}
+```{r, echo=FALSE}
 # LOAD PACKAGES
 library(xlsx)
 library(dplyr)
@@ -60,13 +60,16 @@ nielsen_data_2017 <- na.omit(nielsen_data_2017)
 colnames(nielsen_data_2017)[2] <- 'Januar_2017'
 ```
 
-# Total Spending in Quarter 1 (Jan-Mar)
+# Select, Filter, Arrange, Mutate
 ```{r}
 
 ```
 
 
-# Line Plots Two Brands
+# Total Spending in Quarter 1 (Jan-Mar)
 ```{r}
+nielsen_data_2017 <- mutate(nielsen_data_2017,
+                            q1_2017 = Januar_2017 + Februar_2017 + März_2017)
 
+nielsen_data_2017$q1_2017
 ```
